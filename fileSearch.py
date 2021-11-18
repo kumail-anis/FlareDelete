@@ -2,56 +2,56 @@
 import os
 from pathlib import Path
 
-def fileSearchPath():
+class fileSearch:
 
-    # print(str(Path.home() / "Downloads"))
-    # print(os.path.dirnmae(__file__) / "testingProject")
+    def fileSearchPath():
 
-    # Testing purposes using the folderpath for project
-    search_path = str(Path.home() / "Downloads")
+        # print(str(Path.home() / "Downloads"))
+        # print(os.path.dirnmae(__file__) / "testingProject")
+        # downloads_Directory = str(os.path.dirname(__file__))
+        # search_path = downloads_Directory + "/testingProject"
 
-    downloads_Directory = str(os.path.dirname(__file__))
-    #search_path = downloads_Directory + "/testingProject"
-    file_type = [".yaml", ".yml", ".csv"]
-    search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
+        search_path = str(Path.home() / "Downloads")
+        file_type = [".yaml", ".yml", ".csv"]
+        search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
 
-    # Append a directory separator if not already present
-    if not (search_path.endswith("/") or search_path.endswith("\\") ): 
-            search_path = search_path + "/"
-                                                            
-    # If path does not exist, set search path to current directory
-    if not os.path.exists(search_path):
-            search_path =str(Path.home() / "Downloads")
+        # Append a directory separator if not already present
+        if not (search_path.endswith("/") or search_path.endswith("\\") ): 
+                search_path = search_path + "/"
+                                                                
+        # If path does not exist, set search path to current directory
+        if not os.path.exists(search_path):
+                search_path =str(Path.home() / "Downloads")
 
-    # Repeat for each file in the directory  
-    for fname in os.listdir(path=search_path):
-        
-        fileDirectory = search_path + fname
-        # Apply file type filter   
+        # Repeat for each file in the directory  
+        for fname in os.listdir(path=search_path):
+            
+            fileDirectory = search_path + fname
+            # Apply file type filter   
+            print("test")
+            for fileType in file_type:
+                if fname.endswith(fileType):
 
-        for fileType in file_type:
-            if fname.endswith(fileType):
+                    # Open file for reading
+                    fo = open(fileDirectory)
+                    # Read the first line from the file
+                    line = fo.readline()
 
-                # Open file for reading
-                fo = open(fileDirectory)
-                # Read the first line from the file
-                line = fo.readline()
+                    # Loop until EOF
+                    while line != '' :
+                            # Search for string in line
+                            for element in search_str:
+                                index = line.find(element)
+                                if ( index != -1) :
 
-                # Loop until EOF
-                while line != '' :
-                        # Search for string in line
-                        for element in search_str:
-                            index = line.find(element)
-                            if ( index != -1) :
+                                    if(os.path.exists(search_path + fname)):
+                                        print(fileDirectory + " file deleted")
+                                        os.remove(search_path + fname)
 
-                                if(os.path.exists(search_path + fname)):
-                                    print(fileDirectory + " file deleted")
-                                    os.remove(search_path + fname)
+                            # Read next line
+                            line = fo.readline()  
 
-                        # Read next line
-                        line = fo.readline()  
+                    fo.close()
 
-                fo.close()
-
-if __name__ == '__main__':
-    fileSearchPath()
+    if __name__ == '__main__':
+        fileSearchPath()
