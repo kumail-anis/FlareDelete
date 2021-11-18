@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 
-def main():
+def fileSearchPath():
 
     # print(str(Path.home() / "Downloads"))
     # print(os.path.dirnmae(__file__) / "testingProject")
@@ -37,9 +37,6 @@ def main():
                 # Read the first line from the file
                 line = fo.readline()
 
-                # Initialize counter for line number
-                # line_no = 1
-
                 # Loop until EOF
                 while line != '' :
                         # Search for string in line
@@ -47,19 +44,14 @@ def main():
                             index = line.find(element)
                             if ( index != -1) :
 
-                                #print(fname, "[", line_no, ",", index, "] ", line, sep="")
                                 if(os.path.exists(search_path + fname)):
                                     print(fileDirectory + " file deleted")
                                     os.remove(search_path + fname)
-                                    
 
                         # Read next line
                         line = fo.readline()  
 
-                        # Increment line counter
-                        # line_no += 1
-                # Close the files
                 fo.close()
 
 if __name__ == '__main__':
-    main()
+    fileSearchPath()
