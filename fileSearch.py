@@ -3,10 +3,18 @@
 #Import os module
 import os
 from pathlib import Path
+import re
 
 # Ask the user to enter string to search
-print(str(Path.home() / "Downloads/testingProject"))
-search_path = str(Path.home() / "Downloads/testingProject")
+
+#print(str(Path.home() / "Downloads/testingProject"))
+#print(os.path.dirname(__file__) / "testingProject")
+
+# Testing purposes using the folderpath for project
+# search_path = str(Path.home() / "Downloads")
+
+# REQUIRED TO ADD TESTING FILES IN testingProject repo
+search_path = str(os.path.dirname(__file__)) + "/testingProject"
 file_type = input("File Type : ")
 search_str = input("Enter the search string : ")
 
@@ -38,7 +46,11 @@ for fname in os.listdir(path=search_path):
                 # Search for string in line
                 index = line.find(search_str)
                 if ( index != -1) :
-                    print(fname, "[", line_no, ",", index, "] ", line, sep="")
+
+                    #print(fname, "[", line_no, ",", index, "] ", line, sep="")
+                    
+                    #os.remove(search_path + fname)
+                    print(search_path + fname + " file deleted")
 
                 # Read next line
                 line = fo.readline()  
