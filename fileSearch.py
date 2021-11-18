@@ -1,22 +1,19 @@
-#File created from following resource: https://www.opentechguides.com/how-to/article/python/59/files-containing-text.html
-#Import os module
+# File created from following resource: https://www.opentechguides.com/how-to/article/python/59/files-containing-text.html
 import os
 from pathlib import Path
+
 def main():
 
-#print(str(Path.home() / "Downloads/testingProject"))
-#print(os.path.dirname(__file__) / "testingProject")
+    # print(str(Path.home() / "Downloads"))
+    # print(os.path.dirnmae(__file__) / "testingProject")
 
-# Testing purposes using the folderpath for project
-# search_path = str(Path.home() / "Downloads")
-
-# REQUIRED TO ADD TESTING FILES IN testingProject repo
-
+    # Testing purposes using the folderpath for project
+    search_path = str(Path.home() / "Downloads")
 
     downloads_Directory = str(os.path.dirname(__file__))
-    search_path = downloads_Directory + "/testingProject"
-    file_type = [".yaml", ".yml"]
-    search_str = ["replicaCount:", "datadog:", "datadogAgents:"]
+    #search_path = downloads_Directory + "/testingProject"
+    file_type = [".yaml", ".yml", ".csv"]
+    search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
 
     # Append a directory separator if not already present
     if not (search_path.endswith("/") or search_path.endswith("\\") ): 
@@ -37,12 +34,11 @@ def main():
 
                 # Open file for reading
                 fo = open(fileDirectory)
-
                 # Read the first line from the file
                 line = fo.readline()
 
                 # Initialize counter for line number
-                line_no = 1
+                # line_no = 1
 
                 # Loop until EOF
                 while line != '' :
@@ -52,16 +48,16 @@ def main():
                             if ( index != -1) :
 
                                 #print(fname, "[", line_no, ",", index, "] ", line, sep="")
-                                
                                 if(os.path.exists(search_path + fname)):
-                                    os.remove(search_path + fname)
                                     print(fileDirectory + " file deleted")
+                                    os.remove(search_path + fname)
+                                    
 
                         # Read next line
                         line = fo.readline()  
 
                         # Increment line counter
-                        line_no += 1
+                        # line_no += 1
                 # Close the files
                 fo.close()
 
