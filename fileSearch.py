@@ -1,49 +1,57 @@
-#File created from following resource: https://www.opentechguides.com/how-to/article/python/59/files-containing-text.html
-
-#Import os module
+# File created from following resource: https://www.opentechguides.com/how-to/article/python/59/files-containing-text.html
 import os
 from pathlib import Path
 
-# Ask the user to enter string to search
-print(str(Path.home() / "Downloads/testingProject"))
-search_path = str(Path.home() / "Downloads/testingProject")
-file_type = input("File Type : ")
-search_str = input("Enter the search string : ")
+class fileSearch:
 
-# Append a directory separator if not already present
-if not (search_path.endswith("/") or search_path.endswith("\\") ): 
-        search_path = search_path + "/"
-                                                          
-# If path does not exist, set search path to current directory
-if not os.path.exists(search_path):
-        search_path =str(Path.home() / "Downloads")
+    def fileSearchPath():
 
-# Repeat for each file in the directory  
-for fname in os.listdir(path=search_path):
+        # print(str(Path.home() / "Downloads"))
+        # print(os.path.dirnmae(__file__) / "testingProject")
+        # downloads_Directory = str(os.path.dirname(__file__))
+        # search_path = downloads_Directory + "/testingProject"
 
-   # Apply file type filter   
-   if fname.endswith(file_type):
+        search_path = str(Path.home() / "Downloads")
+        file_type = [".yaml", ".yml", ".csv"]
+        search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
 
-        # Open file for reading
-        fo = open(search_path + fname)
+        # Append a directory separator if not already present
+        if not (search_path.endswith("/") or search_path.endswith("\\") ): 
+                search_path = search_path + "/"
+                                                                
+        # If path does not exist, set search path to current directory
+        if not os.path.exists(search_path):
+                search_path =str(Path.home() / "Downloads")
 
-        # Read the first line from the file
-        line = fo.readline()
+        # Repeat for each file in the directory  
+        for fname in os.listdir(path=search_path):
+            
+            fileDirectory = search_path + fname
+            # Apply file type filter   
+            print("test")
+            for fileType in file_type:
+                if fname.endswith(fileType):
 
-        # Initialize counter for line number
-        line_no = 1
+                    # Open file for reading
+                    fo = open(fileDirectory)
+                    # Read the first line from the file
+                    line = fo.readline()
 
-        # Loop until EOF
-        while line != '' :
-                # Search for string in line
-                index = line.find(search_str)
-                if ( index != -1) :
-                    print(fname, "[", line_no, ",", index, "] ", line, sep="")
+                    # Loop until EOF
+                    while line != '' :
+                            # Search for string in line
+                            for element in search_str:
+                                index = line.find(element)
+                                if ( index != -1) :
 
-                # Read next line
-                line = fo.readline()  
+                                    if(os.path.exists(search_path + fname)):
+                                        print(fileDirectory + " file deleted")
+                                        os.remove(search_path + fname)
 
-                # Increment line counter
-                line_no += 1
-        # Close the files
-        fo.close()
+                            # Read next line
+                            line = fo.readline()  
+
+                    fo.close()
+
+    if __name__ == '__main__':
+        fileSearchPath()
