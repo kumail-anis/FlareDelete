@@ -22,7 +22,7 @@ In order to getting started with the project, you can either running the **main*
 $ python3 main.py
 ```
 
-# Requirements
+## Requirements
 To use this you must have Python 3 installed
 
 
