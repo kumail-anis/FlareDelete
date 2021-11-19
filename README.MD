@@ -19,7 +19,7 @@ This project allows you to delete the following folders and files within your Do
 In order to getting started with the project, you can either running the **main** executable file which then executes the python project within your host machine. Otherwise, as this is an open source project, you can simply execute the command by running it within your terminal line.
 
 ```
-$ python main.py
+$ python3 main.py
 ```
 
 
@@ -55,10 +55,10 @@ Lastly, the third part is in relation to capturing any files which is in relatio
 
 ```python
 search_path = str(Path.home() / "Downloads")
-        file_type = [".yaml", ".yml", ".csv"]
-        search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
+file_type = [".yaml", ".yml", ".csv"]
+search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:"]
 ```
-This section scans the file_types within the Downloads folder which looks for any values within the search_str and deletes the file with the following line:
+This section scans for files with a matching file_type within the Downloads folder, then looks if the file contains any values within the search_str. If the file matches both of these criteria, delete the file with the following line:
 
 ```python
 os.remove(search_path + fname)
