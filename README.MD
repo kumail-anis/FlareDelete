@@ -16,7 +16,7 @@ This project allows you to delete the following folders and files within your Do
 
 ## How to get Started
 
-In order to getting started with the project, you can either running the **main** executable file which then executes the python project within your host machine. Otherwise, as this is an open source project you can simply execute the command by running it within your terminal line.
+In order to getting started with the project, you can either running the **main** executable file which then executes the python project within your host machine. Otherwise, as this is an open source project, you can simply execute the command by running it within your terminal line.
 
 ```
 $ python main.py
