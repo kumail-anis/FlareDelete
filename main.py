@@ -8,7 +8,7 @@ def main():
     extension = ".zip"
     search_path = str(Path.home() / "Downloads")
 
-    removeExtractedFlares()
+    #removeExtractedFlares()
 
     #check whether path exists and is a directory
     if os.path.exists(search_path):
@@ -77,7 +77,6 @@ def removeExtractedFlares():
                                     pathToRemove = "/" + slicedPath[0] + "/" + slicedPath[1] + "/" + slicedPath[2] + "/" + slicedPath[3]
                                     shutil.rmtree(pathToRemove)
                                     print("folder removed")
-
             else:
                 print(f"{targetPath} does not exist")
 
