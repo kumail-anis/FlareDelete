@@ -12,7 +12,7 @@ This project allows you to delete the following folders and files within your Do
 * Daemonset Manifest
 * Unqueried Metrics Value
 
-$~~~~~~~~~~~$
+
 
 ## How to get Started
 
@@ -22,7 +22,7 @@ In order to getting started with the project, you can either running the **main*
 $ python main.py
 ```
 
-$~~~~~~~~~~~$
+
 
 ## How the code works
 
@@ -36,7 +36,7 @@ The project is broken down to three distinct parts, the first being in relation 
 
 The snippet above allows the code to capture the zip file with the name beginning with **datadog-agent** and allow it to iterate through the Downloads folder until it has gone through the list of all the flare zip files it can capture. 
 
-$~~~~~~~~~~~$
+
 
 The second part is capturing all the extracted flare folder by navigating scanning within the folders itself as seen below:
 
@@ -49,7 +49,7 @@ This section scans through the flare folder and looks for the file names consist
 ```python
     shutil.rmtree(pathToRemove)
 ```
-$~~~~~~~~~~~$
+
 
 Lastly, the third part is in relation to capturing any files which is in relation to a Helm manifest, a Daemonset Manifest or Unqueried CSV files as shown below:
 
@@ -65,7 +65,6 @@ os.remove(search_path + fname)
 ```
 The search_path is the string value that is capturing the path of the download files and the fname is the file that captures the search_str value. 
 
-$~~~~~~~~~~~$
 
 ## Contribution/References
 
@@ -75,7 +74,6 @@ In order to capture the information, we used the following resources to capture 
 * https://docs.python.org/3/library/os.html
 * https://docs.python.org/3/library/shutil.html
 
-$~~~~~~~~~~~$
 
 # Authors and acknowledgment
 
