@@ -3,11 +3,6 @@ from pathlib import Path
 
 def fileSearchPath():
 
-    # print(str(Path.home() / "Downloads"))
-    # print(os.path.dirnmae(__file__) / "testingProject")
-    # downloads_Directory = str(os.path.dirname(__file__))
-    # search_path = downloads_Directory + "/testingProject"
-
     search_path = str(Path.home() / "Downloads")
     file_type = [".yaml", ".yml", ".csv"]
     search_str = ["replicaCount:", "datadog:", "datadogAgents:", "podAnnotations:", "kind: DaemonSet", "kind: Deployment", "AWSTemplateFormatVersion:", "Average Custom Metrics / Hour", "init_config:", "Getting the status from the agent"]
