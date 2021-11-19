@@ -2,7 +2,7 @@
 
 ## What this project does
 
-This project allows you to delete the following folders and files within your Download repository:
+This project allows you to delete the following folders and files within your Downloads repository:
 
 * Datadog Flare Zip File
 * Datadog Cluster Agent Flare Zip File
