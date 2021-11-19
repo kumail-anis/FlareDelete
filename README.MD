@@ -38,13 +38,13 @@ The snippet above allows the code to capture the zip file with the name beginnin
 
 
 
-The second part is capturing all the extracted flare folder by navigating scanning within the folders itself as seen below:
+The second part is capturing all the extracted flare folders by scanning within the folders itself as seen below:
 
 ```python
     path = str(Path.home() / "Downloads")
     file_name = ["status.log", "cluster-agent-status.log"]
 ```
-This section scans through the flare folder and looks for the file names consisting of what is shown within the array file_name. Once this captures that the folder contains status.log or cluster-agent-status.log then it goes back to the download's folder and deletes the file using the following line:
+This section scans through each folder and looks for a file name matching what is shown within the list file_name. Once this identifies that a folder contains status.log or cluster-agent-status.log then it goes back to the Downloads folder and deletes the matched folder using the following line:
 
 ```python
     shutil.rmtree(pathToRemove)
